@@ -20,13 +20,6 @@
  loadCategory(); 
 
 
-//  const loadnesDetails =async()=>{
-//     const Url2 = `https://openapi.programming-hero.com/api/news/category/01`;
-//      const res =await fetch(Url2);
-//      const data2 = await res.json();
-//      displaynewses(data2.data); 
-//  }
-
  const displaynewses =async newses =>{
     const Url2 = `https://openapi.programming-hero.com/api/news/category/${newses}`;
      const res =await fetch(Url2);
@@ -69,7 +62,7 @@
     
 </div>
 <p class= "px-3 "> Rating ${_newse.rating.number}</p>
-<div><button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#staticBackdrop" >More..</button></div>
+<div><button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#staticBackdrop" onClick="displaynewses('${_newse.details}')" >More..</button></div>
 
 </div>
             </div>
