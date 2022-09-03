@@ -11,6 +11,8 @@ const loadCategory = async() =>{
      {
         const newsdiv =document.createElement('div');
         newsdiv.innerHTML =`
+        
+
         <button class="  btn btn-primary m-2" id="newsDtails" onClick="displaynewses('${newsType.category_id}')"> ${newsType.category_name} </button>`;
         categorycontainer.appendChild(newsdiv);
     })
@@ -23,12 +25,19 @@ const loadCategory = async() =>{
      const res =await fetch(Url2);
      const data2 = await res.json();
      loadNewses(data2.data);
-
+    
  }
+ 
   const loadNewses = (newses) =>{
     
       console.log(newses);
+      console.log(newses.length);
       
+      const newsText = document.getElementById('news-count');
+      newsText.innerText = `${newses.length}`;
+      const newsContainer = document.getElementById('news-container');
+        
+        newsContainer.innerHTML = "";
     //   newsContainer.innerHTML=``;
       newses.forEach ( _newse=>{
         // console.log(_newse)
