@@ -25,10 +25,13 @@
      const res =await fetch(Url2);
      const data2 = await res.json();
      loadNewses(data2.data);
+
  }
   const loadNewses = (newses) =>{
     
       console.log(newses);
+      const modalBody =document.getElementById('modal-Body');
+      const modalTitle =document.getElementById('staticBackdropLabel');
     //   newsContainer.innerHTML=``;
       newses.forEach ( _newse=>{
         console.log(_newse)
@@ -67,7 +70,9 @@
 </div>
             </div>
           </div>`;
-          
+
+          modalBody.innerText=_newse.details;
+          modalTitle.innerText=_newse.title;
           newsContainer.appendChild(newsDiv);
          
       });
