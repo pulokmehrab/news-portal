@@ -63,8 +63,11 @@
   <div>
     <p class= "px-5 ">viwers ${_newse.total_view}</p>
     
+
+    
 </div>
-<p class= "px-5 "> Rating ${_newse.rating.number}</p>
+<p class= "px-3 "> Rating ${_newse.rating.number}</p>
+<div><button type="button" class="btn btn-info">More..</button></div>
 </div>
             </div>
           </div>`;
