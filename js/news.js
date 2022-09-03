@@ -1,6 +1,4 @@
-   
-                  
-   const loadCategory = async() =>{
+const loadCategory = async() =>{
     const url =`https://openapi.programming-hero.com/api/news/categories`
     const res =await fetch(url);
     const data =await res.json();
@@ -30,11 +28,10 @@
   const loadNewses = (newses) =>{
     
       console.log(newses);
-      const modalBody =document.getElementById('modal-Body');
-      const modalTitle =document.getElementById('staticBackdropLabel');
+      
     //   newsContainer.innerHTML=``;
       newses.forEach ( _newse=>{
-        console.log(_newse)
+        // console.log(_newse)
         const newsContainer = document.getElementById('news-container');
         
         const newsDiv = document.createElement('div');
@@ -48,7 +45,6 @@
               <h6 class="card-text"></h6>
               <p class="card-text">${_newse.details.slice(0,300 )}......</p>
               <p class="card-text"><small class="text-muted"></small></p>
-
               <div class="d-flex">
  <div ">
   <img class=" width rounded-pill"  src="${_newse.author.img}"  alt="">
@@ -61,27 +57,32 @@
   <div>
     <p class= "px-5 ">viwers ${_newse.total_view}</p>
     
-
     
 </div>
 <p class= "px-3 "> Rating ${_newse.rating.number}</p>
-<div><button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#staticBackdrop" onClick="displaynewses('${_newse.details}')" >More..</button></div>
-
+<button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#staticBackdrop" onClick="displayDetails('${_newse._id}')" >More..</button>
 </div>
             </div>
           </div>`;
 
-          modalBody.innerText=_newse.details;
-          modalTitle.innerText=_newse.title;
+          
           newsContainer.appendChild(newsDiv);
          
       });
 
   }
 
-    
+ const displayDetails =async(newsId)=>{
+    const url3 =`https://openapi.programming-hero.com/api/news/${newsId}`
+    const  res =await fetch(url3);
+    const data3 =await res.json()
+    modalNews(data3.data[0]);
+ }
+ const modalNews =(newses)=>{
+    console.log(newses);
 
-
-                           
-
- 
+    const modalBody =document.getElementById('modal-Body');
+      const modalTitle =document.getElementById('staticBackdropLabel');
+      modalBody.innerHTML= newses.details;
+      modalTitle.innerText= newses.title;
+ }
