@@ -69,7 +69,7 @@
     
 </div>
 <p class= "px-3 "> Rating ${_newse.rating.number}</p>
-<div><button type="button" class="btn btn-info">More..</button></div>
+<button type="button" onclick="displaydetails('${_newse._id}')" class="btn btn-info"  >More..</button>
 </div>
             </div>
           </div>`;
@@ -78,6 +78,11 @@
          
       });
 
+  }
+
+  const  displaydetails= (_idnewse)=>{
+    const url3 =`https://openapi.programming-hero.com/api/news/%7Bnews_id%7D=${_idnewse}`
+   console.log(url3);
   }
 
     
