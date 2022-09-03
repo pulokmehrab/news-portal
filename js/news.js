@@ -36,9 +36,11 @@
   const loadNewses = (newses) =>{
     
       console.log(newses);
+    //   newsContainer.innerHTML=``;
       newses.forEach ( _newse=>{
         console.log(_newse)
         const newsContainer = document.getElementById('news-container');
+        
         const newsDiv = document.createElement('div');
             newsDiv.classList.add('row');
             newsDiv.innerHTML =`<div class=" my-2 col-md-4">
@@ -48,7 +50,7 @@
             <div class="card-body">
               <h5 class="card-title">${_newse.title}}</h5>
               <h6 class="card-text"></h6>
-              <p class="card-text">${_newse.details}</p>
+              <p class="card-text">${_newse.details.slice(0,300 )}......</p>
               <p class="card-text"><small class="text-muted"></small></p>
 
               <div class="d-flex">
@@ -71,6 +73,7 @@
 </div>
             </div>
           </div>`;
+          
           newsContainer.appendChild(newsDiv);
          
       });
