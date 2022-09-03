@@ -13,7 +13,7 @@
      {
         const newsdiv =document.createElement('div');
         newsdiv.innerHTML =`
-        <button class=" btn btn-primary m-2" id="newsDtails" onClick="displaynewses('${newsType.category_id}')"> ${newsType.category_name} </button>`;
+        <button class="  btn btn-primary m-2" id="newsDtails" onClick="displaynewses('${newsType.category_id}')"> ${newsType.category_name} </button>`;
         categorycontainer.appendChild(newsdiv);
     })
 }
@@ -42,13 +42,30 @@
         const newsDiv = document.createElement('div');
             newsDiv.classList.add('row');
             newsDiv.innerHTML =`<div class=" my-2 col-md-4">
-            <img src="${_newse.thumbnail_url}" class="img-fluid rounded-start px-2" alt="...">
+            <img src="${_newse.thumbnail_url}" class="img-fluid rounded-end  w-100"  alt="...">
           </div>
           <div class="  col-md-8">
             <div class="card-body">
-              <h5 class="card-title">${_newse.author.name}</h5>
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-              <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+              <h5 class="card-title">${_newse.title}}</h5>
+              <h6 class="card-text"></h6>
+              <p class="card-text">${_newse.details}</p>
+              <p class="card-text"><small class="text-muted"></small></p>
+
+              <div class="d-flex">
+ <div ">
+  <img class=" width rounded-pill"  src="${_newse.author.img}"  alt="">
+ </div>
+  
+  <div class =" align-items-center">
+     <h5>${_newse.author.name}</h5>
+     <p>${_newse.author.published_date} </p>
+  </div>
+  <div>
+    <p class= "px-5 ">viwers ${_newse.total_view}</p>
+    
+</div>
+<p class= "px-5 "> Rating ${_newse.rating.number}</p>
+</div>
             </div>
           </div>`;
           newsContainer.appendChild(newsDiv);
