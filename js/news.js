@@ -41,7 +41,7 @@ const loadCategory = async() =>{
           </div>
           <div class="  col-md-8">
             <div class="card-body">
-              <h5 class="card-title">${_newse.title}}</h5>
+              <h5 class="card-title">${_newse.title}</h5>
               <h6 class="card-text"></h6>
               <p class="card-text">${_newse.details.slice(0,300 )}......</p>
               <p class="card-text"><small class="text-muted"></small></p>
@@ -55,11 +55,11 @@ const loadCategory = async() =>{
      <p>${_newse.author.published_date} </p>
   </div>
   <div>
-    <p class= "px-5 ">viwers ${_newse.total_view}</p>
+    <p class= "px-5 " id="">viwers ${_newse.total_view}</p>
     
     
 </div>
-<p class= "px-3 "> Rating ${_newse.rating.number}</p>
+<p class= "px-3 " > Rating ${_newse.rating.number}</p>
 <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#staticBackdrop" onClick="displayDetails('${_newse._id}')" >More..</button>
 </div>
             </div>
@@ -83,6 +83,17 @@ const loadCategory = async() =>{
 
     const modalBody =document.getElementById('modal-Body');
       const modalTitle =document.getElementById('staticBackdropLabel');
-      modalBody.innerHTML= newses.details;
+      const authorname =document.getElementById('author-name');
+      const viwers =document.getElementById('viwers');
+      modalBody.innerText= newses.details;
       modalTitle.innerText= newses.title;
+      if(authorname.innerText  &&  newses.total_view == null ){
+        authorname.innerText= `NO AUTHOR NAME FOUND`
+        viwers.innerText= `0 viwers`
+      }
+      else{
+        authorname.innerText= newses.author.name;
+        viwers.innerText= newses.total_view;
+      }
+      
  }
