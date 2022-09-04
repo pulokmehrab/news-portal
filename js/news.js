@@ -6,26 +6,33 @@ const loadCategory = async() =>{
 }
  const displayCategoris = newsTypes =>{
     // console.log(newsTypes);
+    
     const categorycontainer = document.getElementById('category-container');
     newsTypes.forEach (newsType=>
      {
+        
         const newsdiv =document.createElement('div');
         newsdiv.innerHTML =`
         
-
+ 
         <button class="  btn btn-primary m-2" id="newsDtails" onClick="displaynewses('${newsType.category_id}')"> ${newsType.category_name} </button>`;
+       
         categorycontainer.appendChild(newsdiv);
+        
     })
+    toggleSpinner(true);
+    
 }
  loadCategory(); 
-
+ 
 
  const displaynewses =async newses =>{
     const Url2 = `https://openapi.programming-hero.com/api/news/category/${newses}`;
      const res =await fetch(Url2);
      const data2 = await res.json();
      loadNewses(data2.data);
-    
+
+     
  }
  
   const loadNewses = (newses) =>{
@@ -34,16 +41,24 @@ const loadCategory = async() =>{
       console.log(newses.length);
       
       const newsText = document.getElementById('news-count');
-      newsText.innerText = `${newses.length}`;
+      if(newses.length===0){
+        newsText.innerText=`no`
+      }
+      else{
+        newsText.innerText = `${newses.length}`;
+      }
+     
       const newsContainer = document.getElementById('news-container');
-        
+     
         newsContainer.innerHTML = "";
+        // toggleSpinner(true);
     //   newsContainer.innerHTML=``;
       newses.forEach ( _newse=>{
         // console.log(_newse)
         const newsContainer = document.getElementById('news-container');
         
         const newsDiv = document.createElement('div');
+        
             newsDiv.classList.add('row');
             newsDiv.innerHTML =`<div class=" my-2 col-md-4">
             <img src="${_newse.thumbnail_url}" class="img-fluid rounded-end  w-100"  alt="...">
@@ -73,11 +88,13 @@ const loadCategory = async() =>{
 </div>
             </div>
           </div>`;
-
+          toggleSpinner(true);
           
           newsContainer.appendChild(newsDiv);
-         
+          
+          toggleSpinner(true);
       });
+      x
 
   }
 
@@ -105,4 +122,13 @@ const loadCategory = async() =>{
         viwers.innerText= newses.total_view;
       }
       
+ }
+ const toggleSpinner = isLoading =>{
+  const loadersection =document.getElementById('loader');
+  if(isLoading){
+    loadersection.classList.remove('d-none')
+  }
+  else{
+    loadersection.classList.add('d-none')
+  }
  }
