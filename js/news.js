@@ -88,13 +88,13 @@ const loadCategory = async() =>{
 </div>
             </div>
           </div>`;
-          toggleSpinner(true);
+          
           
           newsContainer.appendChild(newsDiv);
           
           
       });
-      x
+      
 
   }
 
@@ -123,12 +123,4 @@ const loadCategory = async() =>{
       }
       
  }
- const toggleSpinner = isLoading =>{
-  const loadersection =document.getElementById('loader');
-  if(isLoading){
-    loadersection.classList.remove('d-none')
-  }
-  else{
-    loadersection.classList.add('d-none')
-  }
- }
+ 
