@@ -92,7 +92,7 @@ const loadCategory = async() =>{
           
           newsContainer.appendChild(newsDiv);
           
-          toggleSpinner(true);
+          
       });
       x
 
